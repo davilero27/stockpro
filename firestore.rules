@@ -1,0 +1,473 @@
+rules_version = '2';
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /* =========================================
+       AUTH
+    ========================================= */
+
+    function signedIn() {
+      return request.auth != null;
+    }
+
+    /* =========================================
+       ORGANIZAÇÃO DO USUÁRIO
+    ========================================= */
+
+    function userOrg() {
+      return signedIn()
+        && exists(
+          /databases/$(database)/documents/users/$(request.auth.uid)
+        )
+        ? get(
+            /databases/$(database)/documents/users/$(request.auth.uid)
+          ).data.organizationId
+        : null;
+    }
+
+    function sameOrg(organizationId) {
+      return signedIn()
+        && userOrg() == organizationId;
+    }
+
+    /* =========================================
+       ROLES
+    ========================================= */
+
+    function userRole() {
+      return signedIn()
+        && exists(
+          /databases/$(database)/documents/users/$(request.auth.uid)
+        )
+        ? get(
+            /databases/$(database)/documents/users/$(request.auth.uid)
+          ).data.role
+        : "employee";
+    }
+
+    function isOwner() {
+      return signedIn()
+        && userRole() == "owner";
+    }
+
+    function isAdmin() {
+      return signedIn()
+        && (
+          userRole() == "owner"
+          || userRole() == "admin"
+        );
+    }
+
+    function isEmployee() {
+      return signedIn()
+        && userRole() == "employee";
+    }
+
+    function isValidInviteRole(role) {
+      return role == "owner"
+        || role == "admin"
+        || role == "employee";
+    }
+
+    function isInvitedEmail(email) {
+      return signedIn()
+        && request.auth.token.email == email;
+    }
+
+    /* =========================================
+       PERMISSÕES
+    ========================================= */
+
+    function canManageProducts() {
+      return isAdmin();
+    }
+
+    function canManageSales() {
+      return isAdmin()
+        || isEmployee();
+    }
+
+    function canManageOrganization() {
+      return isOwner();
+    }
+
+    function acceptedInvitePath(organizationId, inviteToken) {
+      return /databases/$(database)/documents/organizations/$(organizationId)/invites/$(inviteToken);
+    }
+
+    function acceptedInviteExists(organizationId, inviteToken) {
+      return existsAfter(acceptedInvitePath(organizationId, inviteToken));
+    }
+
+    function acceptedInviteData(organizationId, inviteToken) {
+      return getAfter(acceptedInvitePath(organizationId, inviteToken)).data;
+    }
+
+    function canCreateMemberFromInvite(organizationId, memberId) {
+      return signedIn()
+        && memberId == request.auth.uid
+        && request.resource.data.keys().hasOnly([
+          "uid",
+          "email",
+          "role",
+          "status",
+          "acceptedInviteToken",
+          "updatedAt"
+        ])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.email is string
+        && request.resource.data.role is string
+        && isValidInviteRole(request.resource.data.role)
+        && request.resource.data.status == "active"
+        && request.resource.data.acceptedInviteToken is string
+        && request.resource.data.updatedAt is timestamp
+        && acceptedInviteExists(
+          organizationId,
+          request.resource.data.acceptedInviteToken
+        )
+        && acceptedInviteData(
+          organizationId,
+          request.resource.data.acceptedInviteToken
+        ).status == "accepted"
+        && acceptedInviteData(
+          organizationId,
+          request.resource.data.acceptedInviteToken
+        ).acceptedBy == request.auth.uid
+        && acceptedInviteData(
+          organizationId,
+          request.resource.data.acceptedInviteToken
+        ).email == request.resource.data.email
+        && acceptedInviteData(
+          organizationId,
+          request.resource.data.acceptedInviteToken
+        ).role == request.resource.data.role;
+    }
+
+    function canUpdateMemberFromInvite(organizationId, memberId) {
+      return signedIn()
+        && memberId == request.auth.uid
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          "uid",
+          "email",
+          "role",
+          "status",
+          "acceptedInviteToken",
+          "updatedAt"
+        ])
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.email is string
+        && request.resource.data.role is string
+        && isValidInviteRole(request.resource.data.role)
+        && request.resource.data.status == "active"
+        && request.resource.data.acceptedInviteToken is string
+        && request.resource.data.updatedAt is timestamp
+        && acceptedInviteExists(
+          organizationId,
+          request.resource.data.acceptedInviteToken
+        )
+        && acceptedInviteData(
+          organizationId,
+          request.resource.data.acceptedInviteToken
+        ).status == "accepted"
+        && acceptedInviteData(
+          organizationId,
+          request.resource.data.acceptedInviteToken
+        ).acceptedBy == request.auth.uid
+        && acceptedInviteData(
+          organizationId,
+          request.resource.data.acceptedInviteToken
+        ).email == request.resource.data.email
+        && acceptedInviteData(
+          organizationId,
+          request.resource.data.acceptedInviteToken
+        ).role == request.resource.data.role;
+    }
+
+    /* =========================================
+       USERS
+    ========================================= */
+
+    match /users/{userId} {
+
+      allow read:
+        if signedIn()
+        && request.auth.uid == userId;
+
+      allow create, update:
+        if signedIn()
+        && request.auth.uid == userId;
+    }
+
+    /* =========================================
+       ORGANIZAÇÕES
+    ========================================= */
+
+    match /organizations/{organizationId} {
+
+      allow read:
+        if sameOrg(organizationId);
+
+      allow create:
+        if signedIn()
+        && organizationId == request.auth.uid;
+
+      allow update:
+        if sameOrg(organizationId)
+        && canManageOrganization();
+
+      /* =========================================
+         MEMBERS
+      ========================================= */
+
+      match /members/{memberId} {
+
+        allow read:
+          if sameOrg(organizationId);
+
+        allow create:
+          if signedIn()
+          && (
+            (
+              organizationId == request.auth.uid
+              && memberId == request.auth.uid
+            )
+            || (
+              sameOrg(organizationId)
+              && isAdmin()
+            )
+            || canCreateMemberFromInvite(
+              organizationId,
+              memberId
+            )
+          );
+
+        allow update:
+          if (
+            sameOrg(organizationId)
+            && isAdmin()
+          )
+          || canUpdateMemberFromInvite(
+            organizationId,
+            memberId
+          );
+
+        allow delete:
+          if sameOrg(organizationId)
+          && isAdmin();
+      }
+
+      /* =========================================
+         INVITES
+      ========================================= */
+
+      match /invites/{inviteId} {
+
+        allow list:
+          if sameOrg(organizationId)
+          && isAdmin();
+
+        allow get:
+          if (
+            sameOrg(organizationId)
+            && isAdmin()
+          )
+          || isInvitedEmail(resource.data.email);
+
+        allow create:
+          if sameOrg(organizationId)
+          && isAdmin()
+          && inviteId == request.resource.data.token
+          && request.resource.data.keys().hasOnly([
+            "email",
+            "role",
+            "token",
+            "status",
+            "createdAt",
+            "expiresAt"
+          ])
+          && request.resource.data.email is string
+          && request.resource.data.role is string
+          && request.resource.data.token is string
+          && request.resource.data.status == "pending"
+          && request.resource.data.createdAt is timestamp
+          && request.resource.data.expiresAt is timestamp
+          && request.resource.data.expiresAt > request.time
+          && isValidInviteRole(request.resource.data.role);
+
+        allow update:
+          if (
+            sameOrg(organizationId)
+            && isAdmin()
+          )
+          || (
+            isInvitedEmail(resource.data.email)
+            && resource.data.status == "pending"
+            && resource.data.expiresAt > request.time
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+              "status",
+              "acceptedAt",
+              "acceptedBy",
+              "updatedAt"
+            ])
+            && request.resource.data.status == "accepted"
+            && request.resource.data.acceptedAt is timestamp
+            && request.resource.data.acceptedBy == request.auth.uid
+            && request.resource.data.updatedAt is timestamp
+          )
+          || (
+            isInvitedEmail(resource.data.email)
+            && resource.data.status == "pending"
+            && resource.data.expiresAt <= request.time
+            && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+              "status",
+              "updatedAt"
+            ])
+            && request.resource.data.status == "expired"
+            && request.resource.data.updatedAt is timestamp
+          );
+
+        allow delete:
+          if sameOrg(organizationId)
+          && isAdmin();
+      }
+
+      /* =========================================
+         PRODUTOS
+      ========================================= */
+
+      match /produtos/{productId} {
+
+        allow read:
+          if sameOrg(organizationId);
+
+        allow create, update, delete:
+          if sameOrg(organizationId)
+          && canManageProducts();
+      }
+
+      /* =========================================
+         VENDAS
+      ========================================= */
+
+      match /vendas/{saleId} {
+
+        allow read:
+          if sameOrg(organizationId);
+
+        allow create:
+          if sameOrg(organizationId)
+          && canManageSales();
+
+        allow update:
+          if sameOrg(organizationId)
+          && isAdmin();
+
+        allow delete:
+          if false;
+      }
+    }
+
+    /* =========================================
+       BLOQUEIO TOTAL DAS COLEÇÕES LEGADAS
+    ========================================= */
+
+    match /produtos/{productId} {
+      allow read, write: if false;
+    }
+
+    match /vendas/{saleId} {
+      allow read, write: if false;
+    }
+
+    /* =========================================
+       CONVITES PUBLICOS POR TOKEN
+    ========================================= */
+
+    match /inviteTokens/{token} {
+
+      allow get:
+        if resource.data.token == token;
+
+      allow list:
+        if false;
+
+      allow create:
+        if signedIn()
+        && sameOrg(request.resource.data.organizationId)
+        && isAdmin()
+        && request.resource.data.keys().hasOnly([
+          "organizationId",
+          "role",
+          "token",
+          "status",
+          "createdAt",
+          "expiresAt"
+        ])
+        && request.resource.data.organizationId is string
+        && request.resource.data.role is string
+        && request.resource.data.token == token
+        && request.resource.data.status == "pending"
+        && request.resource.data.createdAt is timestamp
+        && request.resource.data.expiresAt is timestamp
+        && request.resource.data.expiresAt > request.time
+        && isValidInviteRole(request.resource.data.role);
+
+      allow update:
+        if (
+          signedIn()
+          && sameOrg(resource.data.organizationId)
+          && isAdmin()
+        )
+        || (
+          signedIn()
+          && resource.data.status == "pending"
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+            "status",
+            "acceptedAt",
+            "acceptedBy",
+            "updatedAt"
+          ])
+          && request.resource.data.status == "accepted"
+          && request.resource.data.acceptedAt is timestamp
+          && request.resource.data.acceptedBy == request.auth.uid
+          && request.resource.data.updatedAt is timestamp
+          && acceptedInviteExists(
+            resource.data.organizationId,
+            token
+          )
+          && acceptedInviteData(
+            resource.data.organizationId,
+            token
+          ).status == "accepted"
+          && acceptedInviteData(
+            resource.data.organizationId,
+            token
+          ).acceptedBy == request.auth.uid
+        )
+        || (
+          signedIn()
+          && resource.data.status == "pending"
+          && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+            "status",
+            "updatedAt"
+          ])
+          && request.resource.data.status == "expired"
+          && request.resource.data.updatedAt is timestamp
+          && acceptedInviteExists(
+            resource.data.organizationId,
+            token
+          )
+          && acceptedInviteData(
+            resource.data.organizationId,
+            token
+          ).status == "expired"
+        );
+
+      allow delete:
+        if signedIn()
+        && sameOrg(resource.data.organizationId)
+        && isAdmin();
+    }
+  }
+}
