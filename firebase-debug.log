@@ -1,0 +1,50 @@
+[debug] [2026-06-18T16:04:15.086Z] ----------------------------------------------------------------------
+[debug] [2026-06-18T16:04:15.088Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-18T16:04:15.088Z] CLI Version:   15.21.0
+[debug] [2026-06-18T16:04:15.088Z] Platform:      win32
+[debug] [2026-06-18T16:04:15.088Z] Node Version:  v22.18.0
+[debug] [2026-06-18T16:04:15.088Z] Detected Agent: codex_cli
+[debug] [2026-06-18T16:04:15.088Z] Time:          Thu Jun 18 2026 13:04:15 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-18T16:04:15.088Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-18T16:04:36.358Z] ----------------------------------------------------------------------
+[debug] [2026-06-18T16:04:36.360Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-18T16:04:36.360Z] CLI Version:   15.21.0
+[debug] [2026-06-18T16:04:36.360Z] Platform:      win32
+[debug] [2026-06-18T16:04:36.360Z] Node Version:  v22.18.0
+[debug] [2026-06-18T16:04:36.360Z] Detected Agent: codex_cli
+[debug] [2026-06-18T16:04:36.360Z] Time:          Thu Jun 18 2026 13:04:36 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-18T16:04:36.360Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-18T16:04:59.335Z] ----------------------------------------------------------------------
+[debug] [2026-06-18T16:04:59.337Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-18T16:04:59.337Z] CLI Version:   15.21.0
+[debug] [2026-06-18T16:04:59.337Z] Platform:      win32
+[debug] [2026-06-18T16:04:59.337Z] Node Version:  v22.18.0
+[debug] [2026-06-18T16:04:59.337Z] Detected Agent: codex_cli
+[debug] [2026-06-18T16:04:59.337Z] Time:          Thu Jun 18 2026 13:04:59 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-18T16:04:59.338Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-18T16:05:51.250Z] ----------------------------------------------------------------------
+[debug] [2026-06-18T16:05:51.251Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-18T16:05:51.252Z] CLI Version:   15.21.0
+[debug] [2026-06-18T16:05:51.252Z] Platform:      win32
+[debug] [2026-06-18T16:05:51.252Z] Node Version:  v22.18.0
+[debug] [2026-06-18T16:05:51.252Z] Detected Agent: codex_cli
+[debug] [2026-06-18T16:05:51.252Z] Time:          Thu Jun 18 2026 13:05:51 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-18T16:05:51.252Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-18T16:10:53.998Z] ----------------------------------------------------------------------
+[debug] [2026-06-18T16:10:54.000Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-18T16:10:54.000Z] CLI Version:   15.21.0
+[debug] [2026-06-18T16:10:54.000Z] Platform:      win32
+[debug] [2026-06-18T16:10:54.000Z] Node Version:  v22.18.0
+[debug] [2026-06-18T16:10:54.000Z] Detected Agent: codex_cli
+[debug] [2026-06-18T16:10:54.000Z] Time:          Thu Jun 18 2026 13:10:54 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-18T16:10:54.000Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com

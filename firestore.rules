@@ -88,6 +88,20 @@ service cloud.firestore {
         || isEmployee();
     }
 
+    function canDecreaseProductStockForSale(organizationId) {
+      return sameOrg(organizationId)
+        && canManageSales()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          "estoque",
+          "atualizadoEm"
+        ])
+        && resource.data.estoque is number
+        && request.resource.data.estoque is number
+        && request.resource.data.estoque >= 0
+        && request.resource.data.estoque < resource.data.estoque
+        && request.resource.data.atualizadoEm == request.time;
+    }
+
     function canManageOrganization() {
       return isOwner();
     }
@@ -184,6 +198,21 @@ service cloud.firestore {
         ).role == request.resource.data.role;
     }
 
+    function canAdminUpdateUserRole(userId) {
+      return signedIn()
+        && request.auth.uid != userId
+        && resource.data.organizationId is string
+        && sameOrg(resource.data.organizationId)
+        && isAdmin()
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly([
+          "role",
+          "updatedAt"
+        ])
+        && request.resource.data.role is string
+        && isValidInviteRole(request.resource.data.role)
+        && request.resource.data.updatedAt == request.time;
+    }
+
     /* =========================================
        USERS
     ========================================= */
@@ -194,9 +223,16 @@ service cloud.firestore {
         if signedIn()
         && request.auth.uid == userId;
 
-      allow create, update:
+      allow create:
         if signedIn()
         && request.auth.uid == userId;
+
+      allow update:
+        if (
+          signedIn()
+          && request.auth.uid == userId
+        )
+        || canAdminUpdateUserRole(userId);
     }
 
     /* =========================================
@@ -341,9 +377,16 @@ service cloud.firestore {
         allow read:
           if sameOrg(organizationId);
 
-        allow create, update, delete:
+        allow create, delete:
           if sameOrg(organizationId)
           && canManageProducts();
+
+        allow update:
+          if sameOrg(organizationId)
+          && (
+            canManageProducts()
+            || canDecreaseProductStockForSale(organizationId)
+          );
       }
 
       /* =========================================
