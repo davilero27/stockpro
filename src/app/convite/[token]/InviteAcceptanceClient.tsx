@@ -194,11 +194,32 @@ export function InviteAcceptanceClient({
             </p>
 
             {!user && (
-              <Link href={loginHref}>
-                <Button type="button" className="w-full">
-                  Entrar para aceitar convite
-                </Button>
-              </Link>
+
+              <div className="space-y-3">
+
+                <Link href={loginHref}>
+                  <Button
+                    type="button"
+                    className="w-full"
+                  >
+                    Entrar para aceitar convite
+                  </Button>
+                </Link>
+
+                <Link
+                  href={`/cadastro?redirect=/convite/${token}`}
+                >
+                  <Button
+                    type="button"
+                    variant="secondary"
+                    className="w-full"
+                  >
+                    Criar conta
+                  </Button>
+                </Link>
+
+              </div>
+
             )}
           </div>
         )}

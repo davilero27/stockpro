@@ -9,6 +9,7 @@ import {
 
 import {
   signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
   signOut,
   onAuthStateChanged,
   getIdTokenResult,
@@ -29,6 +30,10 @@ interface AuthContextData {
   role?: UserRole;
   refreshProfile: () => Promise<void>;
   login: (email: string, password: string) => Promise<void>;
+  register: (
+    email: string,
+    password: string
+  ) => Promise<void>;
   logout: () => Promise<void>;
 }
 
@@ -100,6 +105,23 @@ export function AuthProvider({
     document.cookie = "stockpro_session=; path=/; max-age=0; SameSite=Lax";
   }
 
+  // Registro
+  async function register(
+    email: string,
+    password: string
+  ) {
+    const credential =
+      await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+    await loadProfile(
+      credential.user
+    );
+  }
+
   // Listener de autenticação
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
@@ -129,6 +151,7 @@ export function AuthProvider({
         role,
         refreshProfile,
         login,
+        register,
         logout,
       }}
     >
