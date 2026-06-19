@@ -48,3 +48,212 @@
 [debug] [2026-06-18T16:10:54.000Z] ----------------------------------------------------------------------
 [debug] 
 [info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-19T01:25:43.806Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T01:25:43.808Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-19T01:25:43.808Z] CLI Version:   15.22.0
+[debug] [2026-06-19T01:25:43.808Z] Platform:      win32
+[debug] [2026-06-19T01:25:43.808Z] Node Version:  v22.18.0
+[debug] [2026-06-19T01:25:43.809Z] Detected Agent: codex_cli
+[debug] [2026-06-19T01:25:43.809Z] Time:          Thu Jun 18 2026 22:25:43 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T01:25:43.809Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-19T01:31:26.015Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T01:31:26.017Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-19T01:31:26.017Z] CLI Version:   15.22.0
+[debug] [2026-06-19T01:31:26.017Z] Platform:      win32
+[debug] [2026-06-19T01:31:26.017Z] Node Version:  v22.18.0
+[debug] [2026-06-19T01:31:26.017Z] Detected Agent: codex_cli
+[debug] [2026-06-19T01:31:26.017Z] Time:          Thu Jun 18 2026 22:31:26 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T01:31:26.017Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-19T01:32:27.312Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T01:32:27.314Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-19T01:32:27.314Z] CLI Version:   15.22.0
+[debug] [2026-06-19T01:32:27.314Z] Platform:      win32
+[debug] [2026-06-19T01:32:27.314Z] Node Version:  v22.18.0
+[debug] [2026-06-19T01:32:27.314Z] Detected Agent: codex_cli
+[debug] [2026-06-19T01:32:27.315Z] Time:          Thu Jun 18 2026 22:32:27 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T01:32:27.315Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-19T02:01:31.334Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T02:01:31.336Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js firestore:databases:get (default) --project estoque-app-d2df2 --json
+[debug] [2026-06-19T02:01:31.337Z] CLI Version:   15.22.0
+[debug] [2026-06-19T02:01:31.337Z] Platform:      win32
+[debug] [2026-06-19T02:01:31.337Z] Node Version:  v22.18.0
+[debug] [2026-06-19T02:01:31.337Z] Detected Agent: codex_cli
+[debug] [2026-06-19T02:01:31.337Z] Time:          Thu Jun 18 2026 23:01:31 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T02:01:31.337Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-06-19T02:01:34.948Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-19T02:01:34.948Z] > authorizing via signed-in user (davidossantosgk@gmail.com)
+[debug] [2026-06-19T02:01:34.948Z] [iam] checking project estoque-app-d2df2 for permissions ["datastore.databases.get","firebase.projects.get"]
+[debug] [2026-06-19T02:01:34.949Z] Checked if tokens are valid: false, expires at: 1781799750787
+[debug] [2026-06-19T02:01:34.950Z] Checked if tokens are valid: false, expires at: 1781799750787
+[debug] [2026-06-19T02:01:34.950Z] > refreshing access token with scopes: []
+[debug] [2026-06-19T02:01:34.953Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2026-06-19T02:01:34.953Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-06-19T02:01:35.607Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2026-06-19T02:01:35.607Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2026-06-19T02:01:35.622Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/estoque-app-d2df2:testIamPermissions [none]
+[debug] [2026-06-19T02:01:35.622Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/estoque-app-d2df2:testIamPermissions  x-goog-user-project=estoque-app-d2df2
+[debug] [2026-06-19T02:01:35.622Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/estoque-app-d2df2:testIamPermissions {"permissions":["datastore.databases.get","firebase.projects.get"]}
+[debug] [2026-06-19T02:01:37.128Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/estoque-app-d2df2:testIamPermissions 200
+[debug] [2026-06-19T02:01:37.128Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/estoque-app-d2df2:testIamPermissions {"permissions":["datastore.databases.get","firebase.projects.get"]}
+[debug] [2026-06-19T02:01:37.129Z] Checked if tokens are valid: true, expires at: 1781838094607
+[debug] [2026-06-19T02:01:37.129Z] Checked if tokens are valid: true, expires at: 1781838094607
+[debug] [2026-06-19T02:01:37.129Z] >>> [apiv2][query] GET https://firestore.googleapis.com/v1/projects/estoque-app-d2df2/databases/(default) [none]
+[debug] [2026-06-19T02:01:37.537Z] <<< [apiv2][status] GET https://firestore.googleapis.com/v1/projects/estoque-app-d2df2/databases/(default) 200
+[debug] [2026-06-19T02:01:37.538Z] <<< [apiv2][body] GET https://firestore.googleapis.com/v1/projects/estoque-app-d2df2/databases/(default) {"name":"projects/estoque-app-d2df2/databases/(default)","uid":"d9bb16a9-c729-4624-a1ef-41f93cb2962c","createTime":"2026-05-07T02:06:53.439584Z","updateTime":"2026-05-07T02:06:53.439584Z","locationId":"southamerica-east1","type":"FIRESTORE_NATIVE","concurrencyMode":"PESSIMISTIC","versionRetentionPeriod":"3600s","earliestVersionTime":"2026-06-19T01:01:37.620626Z","appEngineIntegrationMode":"DISABLED","keyPrefix":"i","pointInTimeRecoveryEnablement":"POINT_IN_TIME_RECOVERY_DISABLED","deleteProtectionState":"DELETE_PROTECTION_DISABLED","databaseEdition":"STANDARD","freeTier":true,"realtimeUpdatesMode":"REALTIME_UPDATES_MODE_ENABLED","etag":"IPLvneKakpUDMJrh8KaMppQD"}
+[info] ┌──────────────────────────────┬───────────────────────────────────────────────────┐
+│ Field                        │ Value                                             │
+├──────────────────────────────┼───────────────────────────────────────────────────┤
+│ Name                         │ projects/estoque-app-d2df2/databases/(default)    │
+├──────────────────────────────┼───────────────────────────────────────────────────┤
+│ Create Time                  │ 2026-05-07T02:06:53.439584Z                       │
+├──────────────────────────────┼───────────────────────────────────────────────────┤
+│ Last Update Time             │ 2026-05-07T02:06:53.439584Z                       │
+├──────────────────────────────┼───────────────────────────────────────────────────┤
+│ Type                         │ FIRESTORE_NATIVE                                  │
+├──────────────────────────────┼───────────────────────────────────────────────────┤
+│ Edition                      │ STANDARD                                          │
+├──────────────────────────────┼───────────────────────────────────────────────────┤
+│ Location                     │ southamerica-east1                                │
+├──────────────────────────────┼───────────────────────────────────────────────────┤
+│ Delete Protection State      │ DELETE_PROTECTION_DISABLED                        │
+├──────────────────────────────┼───────────────────────────────────────────────────┤
+│ Point In Time Recovery       │ POINT_IN_TIME_RECOVERY_DISABLED                   │
+├──────────────────────────────┼───────────────────────────────────────────────────┤
+│ Earliest Version Time        │ 2026-06-19T01:01:37.620626Z                       │
+├──────────────────────────────┼───────────────────────────────────────────────────┤
+│ Version Retention Period     │ 3600s                                             │
+└──────────────────────────────┴───────────────────────────────────────────────────┘
+[debug] [2026-06-19T02:01:56.929Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T02:01:56.931Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-19T02:01:56.931Z] CLI Version:   15.22.0
+[debug] [2026-06-19T02:01:56.931Z] Platform:      win32
+[debug] [2026-06-19T02:01:56.931Z] Node Version:  v22.18.0
+[debug] [2026-06-19T02:01:56.932Z] Detected Agent: codex_cli
+[debug] [2026-06-19T02:01:56.932Z] Time:          Thu Jun 18 2026 23:01:56 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T02:01:56.932Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-19T02:03:30.355Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T02:03:30.357Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-19T02:03:30.358Z] CLI Version:   15.22.0
+[debug] [2026-06-19T02:03:30.358Z] Platform:      win32
+[debug] [2026-06-19T02:03:30.358Z] Node Version:  v22.18.0
+[debug] [2026-06-19T02:03:30.358Z] Detected Agent: codex_cli
+[debug] [2026-06-19T02:03:30.358Z] Time:          Thu Jun 18 2026 23:03:30 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T02:03:30.358Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-19T02:04:01.284Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T02:04:01.287Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-19T02:04:01.287Z] CLI Version:   15.22.0
+[debug] [2026-06-19T02:04:01.287Z] Platform:      win32
+[debug] [2026-06-19T02:04:01.288Z] Node Version:  v22.18.0
+[debug] [2026-06-19T02:04:01.288Z] Detected Agent: codex_cli
+[debug] [2026-06-19T02:04:01.288Z] Time:          Thu Jun 18 2026 23:04:01 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T02:04:01.288Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-19T02:05:33.467Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T02:05:33.469Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js auth:export - --format=json --project estoque-app-d2df2
+[debug] [2026-06-19T02:05:33.470Z] CLI Version:   15.22.0
+[debug] [2026-06-19T02:05:33.470Z] Platform:      win32
+[debug] [2026-06-19T02:05:33.470Z] Node Version:  v22.18.0
+[debug] [2026-06-19T02:05:33.470Z] Detected Agent: codex_cli
+[debug] [2026-06-19T02:05:33.470Z] Time:          Thu Jun 18 2026 23:05:33 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T02:05:33.470Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2026-06-19T02:05:33.686Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2026-06-19T02:05:33.687Z] > authorizing via signed-in user (davidossantosgk@gmail.com)
+[debug] [2026-06-19T02:05:33.687Z] [iam] checking project estoque-app-d2df2 for permissions ["firebase.projects.get","firebaseauth.users.get"]
+[debug] [2026-06-19T02:05:33.689Z] Checked if tokens are valid: true, expires at: 1781838094607
+[debug] [2026-06-19T02:05:33.689Z] Checked if tokens are valid: true, expires at: 1781838094607
+[debug] [2026-06-19T02:05:33.691Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/estoque-app-d2df2:testIamPermissions [none]
+[debug] [2026-06-19T02:05:33.691Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/estoque-app-d2df2:testIamPermissions  x-goog-user-project=estoque-app-d2df2
+[debug] [2026-06-19T02:05:33.691Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/estoque-app-d2df2:testIamPermissions {"permissions":["firebase.projects.get","firebaseauth.users.get"]}
+[debug] [2026-06-19T02:05:34.404Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/estoque-app-d2df2:testIamPermissions 200
+[debug] [2026-06-19T02:05:34.404Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/estoque-app-d2df2:testIamPermissions {"permissions":["firebase.projects.get","firebaseauth.users.get"]}
+[info] Exporting accounts to -
+[debug] [2026-06-19T02:05:34.405Z] Checked if tokens are valid: true, expires at: 1781838094607
+[debug] [2026-06-19T02:05:34.406Z] Checked if tokens are valid: true, expires at: 1781838094607
+[debug] [2026-06-19T02:05:34.406Z] >>> [apiv2][query] POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount [none]
+[debug] [2026-06-19T02:05:34.406Z] >>> [apiv2][body] POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount {"targetProjectId":"estoque-app-d2df2","maxResults":1000}
+[debug] [2026-06-19T02:05:36.039Z] <<< [apiv2][status] POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount 200
+[debug] [2026-06-19T02:05:36.040Z] <<< [apiv2][body] POST https://www.googleapis.com/identitytoolkit/v3/relyingparty/downloadAccount [omitted]
+[info] +  Exported 11 account(s) successfully. 
+[debug] [2026-06-19T02:06:31.713Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T02:06:31.716Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-19T02:06:31.716Z] CLI Version:   15.22.0
+[debug] [2026-06-19T02:06:31.716Z] Platform:      win32
+[debug] [2026-06-19T02:06:31.716Z] Node Version:  v22.18.0
+[debug] [2026-06-19T02:06:31.717Z] Detected Agent: codex_cli
+[debug] [2026-06-19T02:06:31.717Z] Time:          Thu Jun 18 2026 23:06:31 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T02:06:31.717Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-19T02:07:16.335Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T02:07:16.341Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-19T02:07:16.342Z] CLI Version:   15.22.0
+[debug] [2026-06-19T02:07:16.342Z] Platform:      win32
+[debug] [2026-06-19T02:07:16.343Z] Node Version:  v22.18.0
+[debug] [2026-06-19T02:07:16.343Z] Detected Agent: codex_cli
+[debug] [2026-06-19T02:07:16.344Z] Time:          Thu Jun 18 2026 23:07:16 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T02:07:16.344Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-19T02:08:33.668Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T02:08:33.670Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-19T02:08:33.670Z] CLI Version:   15.22.0
+[debug] [2026-06-19T02:08:33.670Z] Platform:      win32
+[debug] [2026-06-19T02:08:33.671Z] Node Version:  v22.18.0
+[debug] [2026-06-19T02:08:33.671Z] Detected Agent: codex_cli
+[debug] [2026-06-19T02:08:33.671Z] Time:          Thu Jun 18 2026 23:08:33 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T02:08:33.671Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-19T02:09:26.995Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T02:09:26.998Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-19T02:09:26.999Z] CLI Version:   15.22.0
+[debug] [2026-06-19T02:09:26.999Z] Platform:      win32
+[debug] [2026-06-19T02:09:26.999Z] Node Version:  v22.18.0
+[debug] [2026-06-19T02:09:26.999Z] Detected Agent: codex_cli
+[debug] [2026-06-19T02:09:26.999Z] Time:          Thu Jun 18 2026 23:09:26 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T02:09:26.999Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-19T02:09:58.992Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T02:09:58.995Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-19T02:09:58.995Z] CLI Version:   15.22.0
+[debug] [2026-06-19T02:09:58.995Z] Platform:      win32
+[debug] [2026-06-19T02:09:58.995Z] Node Version:  v22.18.0
+[debug] [2026-06-19T02:09:58.996Z] Detected Agent: codex_cli
+[debug] [2026-06-19T02:09:58.996Z] Time:          Thu Jun 18 2026 23:09:58 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T02:09:58.996Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-19T02:12:04.063Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T02:12:04.066Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-19T02:12:04.067Z] CLI Version:   15.22.0
+[debug] [2026-06-19T02:12:04.067Z] Platform:      win32
+[debug] [2026-06-19T02:12:04.068Z] Node Version:  v22.18.0
+[debug] [2026-06-19T02:12:04.069Z] Detected Agent: codex_cli
+[debug] [2026-06-19T02:12:04.069Z] Time:          Thu Jun 18 2026 23:12:04 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T02:12:04.070Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com
+[debug] [2026-06-19T02:12:46.199Z] ----------------------------------------------------------------------
+[debug] [2026-06-19T02:12:46.202Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\david\AppData\Local\npm-cache\_npx\ba4f1959e38407b5\node_modules\firebase-tools\lib\bin\firebase.js login:list --json
+[debug] [2026-06-19T02:12:46.203Z] CLI Version:   15.22.0
+[debug] [2026-06-19T02:12:46.203Z] Platform:      win32
+[debug] [2026-06-19T02:12:46.203Z] Node Version:  v22.18.0
+[debug] [2026-06-19T02:12:46.203Z] Detected Agent: codex_cli
+[debug] [2026-06-19T02:12:46.203Z] Time:          Thu Jun 18 2026 23:12:46 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2026-06-19T02:12:46.204Z] ----------------------------------------------------------------------
+[debug] 
+[info] Logged in as davidossantosgk@gmail.com

@@ -43,6 +43,15 @@ export default function MembersPage() {
 
     try {
 
+      console.log(
+        "[updateMemberRole] handler payload",
+        {
+          organizationId,
+          memberUid,
+          role,
+        }
+      );
+
       await updateMemberRole(
         organizationId,
         memberUid,
@@ -57,7 +66,25 @@ export default function MembersPage() {
 
     } catch (error) {
 
-      console.error(error);
+      console.error(
+        "[updateMemberRole] handler error",
+        {
+          code:
+            error instanceof Error &&
+            "code" in error
+              ? (error as { code?: string }).code
+              : undefined,
+          message:
+            error instanceof Error
+              ? error.message
+              : String(error),
+          stack:
+            error instanceof Error
+              ? error.stack
+              : undefined,
+          raw: error,
+        }
+      );
 
       alert(
         "Erro ao atualizar cargo."

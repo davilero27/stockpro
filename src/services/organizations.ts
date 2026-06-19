@@ -395,6 +395,19 @@ export async function updateMemberRole(
     uid
   );
 
+  console.log(
+    "[updateMemberRole] service payload",
+    {
+      organizationId,
+      uid,
+      role,
+      writes: {
+        memberPath: memberRef.path,
+        userPath: userRef.path,
+      },
+    }
+  );
+
   batch.update(
     memberRef,
     {
