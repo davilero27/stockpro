@@ -18,6 +18,7 @@ import {
   X,
   Settings,
   UserPlus,
+  Users,
 } from "lucide-react";
 
 import { toast } from "sonner";
@@ -126,6 +127,18 @@ export function Sidebar({
     },
 
     {
+      href: "/membros",
+
+      label: "Membros",
+
+      icon: Users,
+
+      visible:
+        role === "owner" ||
+        role === "admin",
+    },
+
+    {
       href: "/convites",
 
       label: "Convites",
@@ -202,11 +215,11 @@ export function Sidebar({
 
               const isActive =
                 pathname ===
-                  item.href ||
+                item.href ||
                 (item.href ===
                   "/dashboard" &&
                   pathname ===
-                    "/");
+                  "/");
 
               return (
                 <Link
@@ -219,11 +232,10 @@ export function Sidebar({
                   onClick={
                     onClose
                   }
-                  className={`flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm font-medium transition-all ${
-                    isActive
+                  className={`flex items-center gap-3 rounded-lg px-4 py-2.5 text-sm font-medium transition-all ${isActive
                       ? "bg-blue-600 text-white shadow-md shadow-blue-600/25"
                       : "text-zinc-400 hover:bg-zinc-800/60 hover:text-white"
-                  }`}
+                    }`}
                 >
 
                   <Icon className="h-5 w-5 shrink-0" />
@@ -285,11 +297,10 @@ export function Sidebar({
 
       {/* Sidebar Mobile */}
       <aside
-        className={`fixed inset-y-0 left-0 z-50 flex w-[min(82vw,20rem)] shrink-0 flex-col border-r border-zinc-800/80 bg-[#0c0c0e] transition-transform duration-300 md:hidden ${
-          open
+        className={`fixed inset-y-0 left-0 z-50 flex w-[min(82vw,20rem)] shrink-0 flex-col border-r border-zinc-800/80 bg-[#0c0c0e] transition-transform duration-300 md:hidden ${open
             ? "translate-x-0"
             : "-translate-x-full"
-        }`}
+          }`}
       >
 
         {/* Botão fechar */}
