@@ -1,8 +1,16 @@
 "use client";
 
-import { useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+
+import { useSearchParams } from "next/navigation";
+
+import { doc, getDoc } from "firebase/firestore";
 
 import type { Product } from "@/lib/types";
+
+import { db } from "@/lib/firestore";
+
+import { useAuth } from "@/contexts/AuthContext";
 
 import { AppLayout } from "@/components/AppLayout";
 
@@ -12,9 +20,37 @@ import { ProductList } from "@/components/ProductList";
 
 import { SectionTitle } from "@/components/ui/SectionTitle";
 
-export default function ProdutosPage() {
+function ProdutosContent() {
   const [editingProduct, setEditingProduct] =
     useState<Product | null>(null);
+
+  const { organizationId } = useAuth();
+
+  const searchParams = useSearchParams();
+
+  useEffect(() => {
+    const editId = searchParams.get("edit");
+    const orgId = organizationId;
+
+    if (!editId || !orgId) {
+      return;
+    }
+
+    const productRef = doc(db, "organizations", orgId, "produtos", editId);
+
+    async function loadProduct() {
+      const snap = await getDoc(productRef);
+
+      if (snap.exists()) {
+        setEditingProduct({
+          id: snap.id,
+          ...snap.data(),
+        } as Product);
+      }
+    }
+
+    loadProduct();
+  }, [searchParams, organizationId]);
 
   return (
     <AppLayout>
@@ -42,5 +78,13 @@ export default function ProdutosPage() {
         />
       </div>
     </AppLayout>
+  );
+}
+
+export default function ProdutosPage() {
+  return (
+    <Suspense fallback={null}>
+      <ProdutosContent />
+    </Suspense>
   );
 }
